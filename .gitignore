@@ -1,0 +1,24 @@
+*.class
+*.log
+hs_err_pid*
+
+.settings
+
+/.vscode/
+/.gradle/
+# /.idea/
+
+/app/out/
+/out/
+
+/bin/
+# /lib/
+/build/
+
+/app/build/
+/app/bin/
+/app/.classpath
+/app/.project
+
+.classpath
+.project

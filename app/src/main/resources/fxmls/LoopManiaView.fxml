@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<StackPane fx:id="userInterface" onKeyPressed="#handleKeyPress" xmlns="http://javafx.com/javafx/11.0.2"
+           xmlns:fx="http://javafx.com/fxml/1">
+    <AnchorPane fx:id="anchorPaneRoot" style="-fx-border-color: black;">
+        <HBox prefHeight="100.0" prefWidth="200.0">
+            <VBox>
+                <!-- VBox is used to stack items vertically top to bottom -->
+                <VBox minHeight="80.0" minWidth="640.0" prefWidth="600.0" style="-fx-border-color: yellow;">
+                    <HBox minHeight="24.0" minWidth="640.0">
+                        <Text fx:id="goalText" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER">
+                            <font>
+                                <Font size="16.0"/>
+                            </font>
+                        </Text>
+                    </HBox>
+
+                    <GridPane fx:id="cycles">
+                        <columnConstraints>
+                            <ColumnConstraints/>
+                        </columnConstraints>
+                        <rowConstraints>
+                            <RowConstraints/>
+                        </rowConstraints>
+                    </GridPane>
+                    <GridPane fx:id="sliderGrid">
+                        <columnConstraints>
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="25.0"/>
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+                        </columnConstraints>
+                        <rowConstraints>
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                        </rowConstraints>
+                        <Slider fx:id="slider" max="50.0" maxWidth="250.0" min="5.0" prefWidth="250.0" value="15.0"
+                                GridPane.columnIndex="1"/>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Game Speed: ">
+                            <font>
+                                <Font size="16.0"/>
+                            </font>
+                        </Text>
+                    </GridPane>
+                </VBox>
+                <VBox focusTraversable="true"><!-- this BorderPane contains the ground under the cards and the cards -->
+                    <BorderPane>
+                        <bottom>
+                            <!-- cards GridPane holds the cards which can be used on the map -->
+                            <GridPane fx:id="cards" xmlns="http://javafx.com/javafx/8.0.171"
+                                      xmlns:fx="http://javafx.com/fxml/1">
+                                <columnConstraints>
+                                    <ColumnConstraints/>
+                                </columnConstraints>
+                                <rowConstraints>
+                                    <RowConstraints/>
+                                </rowConstraints>
+                            </GridPane>
+                        </bottom>
+                        <center>
+
+                            <!-- squares contains the path, buildings, character, and enemies -->
+                            <GridPane fx:id="squares" BorderPane.alignment="CENTER">
+                                <columnConstraints>
+                                    <ColumnConstraints/>
+                                </columnConstraints>
+                                <rowConstraints>
+                                    <RowConstraints/>
+                                </rowConstraints>
+                            </GridPane>
+                        </center>
+                    </BorderPane>
+                </VBox>
+                <TitledPane collapsible="false" text="Battle Log">
+                    <TextArea fx:id="logArea" editable="false" focusTraversable="false" minHeight="200.0"
+                              minWidth="600.0"/>
+                </TitledPane>
+            </VBox>
+            <VBox minWidth="300.0">
+                <VBox>
+                    <!-- equippedItems contains the equipment equipped by the character in special slots -->
+                    <!-- TODO = extend this to have slots for equipping armour, shields, helmets, and any other equippable items -->
+                    <GridPane fx:id="equippedItems">
+                        <columnConstraints>
+                            <ColumnConstraints/>
+                        </columnConstraints>
+                        <rowConstraints>
+                            <RowConstraints/>
+                        </rowConstraints>
+                    </GridPane>
+
+                    <!-- unequippedInventory is for unequipped items, which can be dragged into the equipped inventory -->
+                    <GridPane fx:id="unequippedInventory">
+                        <columnConstraints>
+                            <ColumnConstraints/>
+                        </columnConstraints>
+                        <rowConstraints>
+                            <RowConstraints/>
+                        </rowConstraints>
+                    </GridPane>
+                </VBox>
+                <VBox style="-fx-border-color: green;" minHeight="600.0">
+                    <GridPane prefHeight="469.0" prefWidth="294.0">
+                        <columnConstraints>
+                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="159.0" minWidth="10.0"
+                                               prefWidth="146.0"/>
+                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="152.0" minWidth="10.0"
+                                               prefWidth="148.0"/>
+                        </columnConstraints>
+                        <rowConstraints>
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                        </rowConstraints>
+                        <Slider fx:id="musicVolume" maxWidth="250.0" prefWidth="250.0" value="80.0"
+                                GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="1"/>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Music Volume :">
+                            <font>
+                                <Font size="14.0"/>
+                            </font>
+                        </Text>
+                        <GridPane fx:id="soldiers" GridPane.columnSpan="2" GridPane.rowIndex="8">
+                            <columnConstraints>
+                                <ColumnConstraints/>
+                            </columnConstraints>
+                            <rowConstraints>
+                                <RowConstraints/>
+                            </rowConstraints>
+                        </GridPane>
+                        <Text fx:id="soldierText" strokeType="OUTSIDE" strokeWidth="0.0" text="Soldiers:"
+                              GridPane.rowIndex="7">
+                            <font>
+                                <Font size="16.0"/>
+                            </font>
+                        </Text>
+
+                        <GridPane fx:id="status" GridPane.columnSpan="2" GridPane.rowIndex="6">
+                            <columnConstraints>
+                                <ColumnConstraints/>
+                            </columnConstraints>
+                            <rowConstraints>
+                                <RowConstraints/>
+                            </rowConstraints>
+                        </GridPane>
+
+                        <GridPane fx:id="doggieCoin" hgap="15" vgap="10" GridPane.columnSpan="2"
+                                  GridPane.rowIndex="5">
+                            <columnConstraints>
+                                <ColumnConstraints/>
+                            </columnConstraints>
+                            <rowConstraints>
+                                <RowConstraints/>
+                            </rowConstraints>
+                        </GridPane>
+
+                        <GridPane fx:id="gold" hgap="8" GridPane.columnSpan="2" GridPane.rowIndex="4">
+                            <columnConstraints>
+                                <ColumnConstraints/>
+                            </columnConstraints>
+                            <rowConstraints>
+                                <RowConstraints/>
+                            </rowConstraints>
+                        </GridPane>
+
+                        <GridPane fx:id="experience" GridPane.columnSpan="2" GridPane.rowIndex="3">
+                            <columnConstraints>
+                                <ColumnConstraints/>
+                            </columnConstraints>
+                            <rowConstraints>
+                                <RowConstraints/>
+                            </rowConstraints>
+                        </GridPane>
+
+                        <GridPane fx:id="characterHealth" GridPane.columnSpan="2" GridPane.rowIndex="2">
+                            <columnConstraints>
+                                <ColumnConstraints/>
+                            </columnConstraints>
+                            <rowConstraints>
+                                <RowConstraints/>
+                            </rowConstraints>
+                        </GridPane>
+                    </GridPane>
+                    <TitledPane collapsible="false" text="Soldiers Log">
+                        <TextArea fx:id="textArea" editable="false" minHeight="200.0"/>
+                    </TitledPane>
+                    <!-- clicking this button returns the human player to the main menu -->
+                    <Button onAction="#switchToMainMenu" prefWidth="300.0" text="Exit to Main Menu"
+                            textAlignment="CENTER" wrapText="true">
+                        <font>
+                            <Font size="16.0"/>
+                        </font>
+                    </Button>
+                </VBox>
+            </VBox>
+        </HBox>
+    </AnchorPane>
+</StackPane>
