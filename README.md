@@ -18,9 +18,9 @@ gradle run
 
 ---
 
-![main_menu_view](F:\Github\LoopMania\image\main_menu_view.png)
+![main_menu_view](/image/main_menu_view.png)
 
 ---
 
-![game_view](F:\Github\LoopMania\image\game_view.png)
+![game_view](/image/game_view.png)
 
